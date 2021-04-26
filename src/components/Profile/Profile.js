@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Redirect } from "react-router-dom";
 import MetaTags from 'react-meta-tags';
 import Header from "../Common/Header";
-// import "./../Common/Fonts/vazir-fonts/fonts.css";
+import "./Profile.css";
 import "./../Common/styles.css";
-import "./Profile.css"
 import cover_photo from "./cover photo.jpg"
+import Footer from "../Common/Footer";
 
 
 const axios = require('axios').default;
@@ -205,7 +205,7 @@ class Profile extends React.Component {
         else if (status === 200)
         {
             return (
-                <div className="wrapper">
+                <div className="container">
                     <MetaTags>
                         <title>Home</title>
                         <meta charSet="utf-8"/>
@@ -219,7 +219,6 @@ class Profile extends React.Component {
                         <script src={"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"}/>
                         <script src={"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"}/>
                     </MetaTags>
-                    <div className="container">
                         <div className="row">
                             <Header />
                         </div>
@@ -247,8 +246,10 @@ class Profile extends React.Component {
                                 <Transcript coursesData={this.state.coursesData}/>
                             </div>
                         </div>
+                        <div className="row">
+                            <Footer />
+                        </div>
                     </div>
-                </div>
                 );
         }
         else {
