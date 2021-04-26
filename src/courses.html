@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <title>Courses</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="components/Common/styles.css">
+  <link rel="stylesheet" href="courses.css">
+  <link rel="stylesheet" href="Fonts/flaticon.css">
+  <link rel="stylesheet" href="Fonts/vazir-fonts/fonts.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="header">
+            <div class="col-2">
+                    <img src="components/Common/logo.png" id="logo-img">
+            </div>
+            <div class="col-6">
+                <div class="links">
+                    <a href="/entekhab_vahed">  انتخاب واحد</a>
+                    <a href="/barname"> برنامه هفتگی</a>    
+                </div>
+                
+            </div>
+            <div class="col-4">
+                <div class="logout">
+                    خروج
+                <i class="flaticon-log-out"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="main">
+        <div class="col-12", id="main_col">
+            <div class="selected_courses">
+            <div class='label'>دروس انتخاب‌شده</div>
+            <br>
+            <table class="selected_table">
+                <tr>
+                    <th class="row_id"></th>
+                    <th>وضعیت</th>
+                    <th>کد</th>
+                    <th>نام درس</th>
+                    <th>استاد</th>
+                    <th>واحد</th>
+                </tr>
+                
+                <tr>
+                    <td class="delete"><button class="delete_button"> <i class="flaticon-trash-bin"></i> </button></td>
+                    <td ><div class="status" id="submited">ثبت شده</div></td>
+                    <td>001</td>
+                    <td>طراحی و ساخت کامپایلر</td>
+                    <td ><div>آقای فلان</div></td>
+                    <td><div class="credit">۳</div> </td>
+                </tr>
+                <tr>
+                    <td class="delete"><button class="delete_button"> <i class="flaticon-trash-bin"></i> </button></td>
+                    <td ><div class="status" id="submited">ثبت شده</div></td>
+                    <td>002</td>
+                    <td>طراحی و ساخت کامپایلر</td>
+                    <td ><div>خانم بهمان</div></td>
+                    <td><div class="credit">۴</div> </td>
+                </tr>
+                <tr>
+                    <td class="delete"><button class="delete_button"> <i class="flaticon-trash-bin"></i> </button></td>
+                    <td ><div class="status" id="not_submited">ثبت نهایی نشده</div></td>
+                    <td>003</td>
+                    <td>طراحی و ساخت کامپایلر</td>
+                    <td ><div>آقای فلان</div></td>
+                    <td><div class="credit">۳</div> </td>
+                </tr>
+                <tr>
+                    <td class="delete"><button class="delete_button"> <i class="flaticon-trash-bin"></i> </button></td>
+                    <td ><div class="status" id="waiting">در انتظار</div></td>
+                    <td>004</td>
+                    <td>طراحی و ساخت کامپایلر</td>
+                    <td ><div>خانم بهمان</div></td>
+                    <td><div class="credit">۳</div> </td>
+                </tr>
+            </table> 
+            <div class="submit">
+                <div class="col-6">
+                    <div class="credits">تعداد واحد ثبت شده: ۱۵</div></div>
+                <div class="col-6">
+                    <button type="button" id="revert"><i class="flaticon-refresh-arrow"></i></button>
+                    <button type="button" id="final_submit">ثبت نهایی</button>
+                </div>
+            </div>
+            </div>
+            <div class="search">
+                <form action="" id="search_form">
+                        <input type="text" id="course_name" name="course_name" value="نام درس"><br>
+                        <button type="submit" class="search_button">    جستجو   &nbsp &nbsp   <i class="flaticon-loupe"></i></button>
+                </form> 
+            </div>
+            <div class="offerings">
+                <div class='label'>دروس انتخاب‌شده</div>
+                <div class="courses_types">
+                    <button type="button" id="all_courses" class="selected_button">همه</button>
+                    <button type="button" id="ekhtesasi_courses" class="normal_button">اختصاصی</button>
+                    <button type="button" id="main_courses" class="normal_button">اصلی</button>
+                    <button type="button" id="basic_courses" class="normal_button">پایه</button>
+                    <button type="button" id="general_courses" class="normal_button">عمومی</button>
+
+                </div>
+                <table class="offerings_table">
+                    <tr>
+                        <th class="offering_status"></th>
+                        <th>کد</th>
+                        <th>ظرفیت</th>
+                        <th>نوع</th>
+                        <th>نام درس</th>
+                        <th>استاد</th>
+                        <th>واحد</th>
+                        <th class="description">توضیحات</th>
+                    </tr>
+                    
+                    <tr>
+                        <td class="action"><button class="action_button" id="normal"> <i class="flaticon-add"></i> </button></td>
+                        <td >۱۲۳۴۵۶۷-۰۱</td>
+                        <td ><div class="capacity", id="not_full">۲۶/۵۰</div></td>
+                        <td><div class="course_type", id="ekhtesasi">تخصصی</div></td>
+                        <td>طراحی و ساخت کامپایلر</td>
+                        <td ><div>آقای فلان</div></td>
+                        <td><div class="credit">۳</div> </td>
+                        <td class="description"></td>
+                    </tr>
+                                        
+                    <tr>
+                        <td class="action"><button class="action_button" id='clock'> <i class="flaticon-clock-circular-outline"></i> </button></td>
+                        <td >۱۲۳۴۵۶۷-۰۱</td>
+                        <td ><div class="capacity", id="full">۵۲/۵۰</div></td>
+                        <td><div class="course_type", id="general">عمومی</div></td>
+                        <td>طراحی و ساخت کامپایلر</td>
+                        <td ><div>آقای فلان</div></td>
+                        <td><div class="credit">۳</div> </td>
+                        <td class="description"></td>
+                    </tr>
+                                        
+                    <tr>
+                        <td class="action"><button class="action_button" id="normal"> <i class="flaticon-add"></i> </button></td>
+                        <td >۱۲۳۴۵۶۷-۰۱</td>
+                        <td ><div class="capacity", id="not_full">۲۶/۵۰</div></td>
+                        <td><div class="course_type", id="fundamental">اصلی</div></td>
+                        <td>طراحی و ساخت کامپایلر</td>
+                        <td ><div>آقای فلان</div></td>
+                        <td><div class="credit">۳</div> </td>
+                        <td class="description"></td>
+                    </tr>
+                                        
+                    <tr>
+                        <td class="action"><button class="action_button" id="normal"> <i class="flaticon-add"></i> </button></td>
+                        <td >۱۲۳۴۵۶۷-۰۱</td>
+                        <td ><div class="capacity", id="not_full">۲۶/۵۰</div></td>
+                        <td><div class="course_type", id="basic">پایه</div></td>
+                        <td>طراحی و ساخت کامپایلر</td>
+                        <td ><div>آقای فلان</div></td>
+                        <td><div class="credit">۳</div> </td>
+                        <td class="description"></td>
+                    </tr>
+
+                    
+                    <tr>
+                        <td class="action"><button class="action_button" id="normal"> <i class="flaticon-add"></i> </button></td>
+                        <td >۱۲۳۴۵۶۷-۰۱</td>
+                        <td ><div class="capacity", id="not_full">۲۶/۵۰</div></td>
+                        <td><div class="course_type", id="ekhtesasi">تخصصی</div></td>
+                        <td>طراحی و ساخت کامپایلر</td>
+                        <td ><div>آقای فلان</div></td>
+                        <td><div class="credit">۳</div> </td>
+                        <td class="description"></td>
+                    </tr>
+                                        
+                    <tr>
+                        <td class="action"><button class="action_button" id='clock'> <i class="flaticon-clock-circular-outline"></i> </button></td>
+                        <td >۱۲۳۴۵۶۷-۰۱</td>
+                        <td ><div class="capacity", id="full">۵۲/۵۰</div></td>
+                        <td><div class="course_type", id="general">عمومی</div></td>
+                        <td>طراحی و ساخت کامپایلر</td>
+                        <td ><div>آقای فلان</div></td>
+                        <td><div class="credit">۳</div> </td>
+                        <td class="description"></td>
+                    </tr>
+                                        
+                    <tr>
+                        <td class="action"><button class="action_button" id="normal"> <i class="flaticon-add"></i> </button></td>
+                        <td >۱۲۳۴۵۶۷-۰۱</td>
+                        <td ><div class="capacity", id="not_full">۲۶/۵۰</div></td>
+                        <td><div class="course_type", id="fundamental">اصلی</div></td>
+                        <td>طراحی و ساخت کامپایلر</td>
+                        <td ><div>آقای فلان</div></td>
+                        <td><div class="credit">۳</div> </td>
+                        <td class="description"></td>
+                    </tr>
+                                        
+                    <tr>
+                        <td class="action"><button class="action_button" id="normal"> <i class="flaticon-add"></i> </button></td>
+                        <td >۱۲۳۴۵۶۷-۰۱</td>
+                        <td ><div class="capacity", id="not_full">۲۶/۵۰</div></td>
+                        <td><div class="course_type", id="basic">پایه</div></td>
+                        <td>طراحی و ساخت کامپایلر</td>
+                        <td ><div>آقای فلان</div></td>
+                        <td><div class="credit">۳</div> </td>
+                        <td class="description"></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="action"><button class="action_button" id="normal"> <i class="flaticon-add"></i> </button></td>
+                        <td >۱۲۳۴۵۶۷-۰۱</td>
+                        <td ><div class="capacity", id="not_full">۲۶/۵۰</div></td>
+                        <td><div class="course_type", id="ekhtesasi">تخصصی</div></td>
+                        <td>طراحی و ساخت کامپایلر</td>
+                        <td ><div>آقای فلان</div></td>
+                        <td><div class="credit">۳</div> </td>
+                        <td class="description"></td>
+                    </tr>
+                                        
+                    <tr>
+                        <td class="action"><button class="action_button" id='clock'> <i class="flaticon-clock-circular-outline"></i> </button></td>
+                        <td >۱۲۳۴۵۶۷-۰۱</td>
+                        <td ><div class="capacity", id="full">۵۲/۵۰</div></td>
+                        <td><div class="course_type", id="general">عمومی</div></td>
+                        <td>طراحی و ساخت کامپایلر</td>
+                        <td ><div>آقای فلان</div></td>
+                        <td><div class="credit">۳</div> </td>
+                        <td class="description"></td>
+                    </tr>
+                                        
+                    <tr>
+                        <td class="action"><button class="action_button" id="normal"> <i class="flaticon-add"></i> </button></td>
+                        <td >۱۲۳۴۵۶۷-۰۱</td>
+                        <td ><div class="capacity", id="not_full">۲۶/۵۰</div></td>
+                        <td><div class="course_type", id="fundamental">اصلی</div></td>
+                        <td>طراحی و ساخت کامپایلر</td>
+                        <td ><div>آقای فلان</div></td>
+                        <td><div class="credit">۳</div> </td>
+                        <td class="description"></td>
+                    </tr>
+                                        
+                    <tr>
+                        <td class="action"><button class="action_button" id="normal"> <i class="flaticon-add"></i> </button></td>
+                        <td >۱۲۳۴۵۶۷-۰۱</td>
+                        <td ><div class="capacity", id="not_full">۲۶/۵۰</div></td>
+                        <td><div class="course_type", id="basic">پایه</div></td>
+                        <td>طراحی و ساخت کامپایلر</td>
+                        <td ><div>آقای فلان</div></td>
+                        <td><div class="credit">۳</div> </td>
+                        <td class="description"></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="action"><button class="action_button" id="normal"> <i class="flaticon-add"></i> </button></td>
+                        <td >۱۲۳۴۵۶۷-۰۱</td>
+                        <td ><div class="capacity", id="not_full">۲۶/۵۰</div></td>
+                        <td><div class="course_type", id="ekhtesasi">تخصصی</div></td>
+                        <td>طراحی و ساخت کامپایلر</td>
+                        <td ><div>آقای فلان</div></td>
+                        <td><div class="credit">۳</div> </td>
+                        <td class="description"></td>
+                    </tr>
+                                        
+                    <tr>
+                        <td class="action"><button class="action_button" id='clock'> <i class="flaticon-clock-circular-outline"></i> </button></td>
+                        <td >۱۲۳۴۵۶۷-۰۱</td>
+                        <td ><div class="capacity", id="full">۵۲/۵۰</div></td>
+                        <td><div class="course_type", id="general">عمومی</div></td>
+                        <td>طراحی و ساخت کامپایلر</td>
+                        <td ><div>آقای فلان</div></td>
+                        <td><div class="credit">۳</div> </td>
+                        <td class="description"></td>
+                    </tr>
+                                        
+                    <tr>
+                        <td class="action"><button class="action_button" id="normal"> <i class="flaticon-add"></i> </button></td>
+                        <td >۱۲۳۴۵۶۷-۰۱</td>
+                        <td ><div class="capacity", id="not_full">۲۶/۵۰</div></td>
+                        <td><div class="course_type", id="fundamental">اصلی</div></td>
+                        <td>طراحی و ساخت کامپایلر</td>
+                        <td ><div>آقای فلان</div></td>
+                        <td><div class="credit">۳</div> </td>
+                        <td class="description"></td>
+                    </tr>
+                                        
+                    <tr>
+                        <td class="action"><button class="action_button" id="normal"> <i class="flaticon-add"></i> </button></td>
+                        <td >۱۲۳۴۵۶۷-۰۱</td>
+                        <td ><div class="capacity", id="not_full">۲۶/۵۰</div></td>
+                        <td><div class="course_type", id="basic">پایه</div></td>
+                        <td>طراحی و ساخت کامپایلر</td>
+                        <td ><div>آقای فلان</div></td>
+                        <td><div class="credit">۳</div> </td>
+                        <td class="description"></td>
+                    </tr>
+                </table> 
+
+                </div>
+        </div>
+    </div>
+    
+
+    <div class="row">
+        <div class="footer">
+            <div class="col-6">
+                <p class="name">
+                    <i class="flaticon-copyright"></i>
+                    دانشگاه تهران - سامانه‌ی بلبلستان
+                </p>
+            </div>
+
+            <div class="col-6">
+                <p class="socials">
+                    <i class="flaticon-facebook"></i>
+                    <i class="flaticon-instagram"></i>
+                    <i class="flaticon-linkedin-logo"></i>
+                    <i class="flaticon-twitter-logo-on-black-background"></i>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html> 

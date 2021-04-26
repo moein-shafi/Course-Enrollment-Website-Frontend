@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <title>Schedule</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="components/Common/styles.css">
+  <link rel="stylesheet" href="schedule.css">
+  <link rel="stylesheet" href="Fonts/flaticon.css">
+  <link rel="stylesheet" href="Fonts/vazir-fonts/fonts.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxc
+  dn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="header">
+            <div class="col-2">
+                    <img src="components/Common/logo.png" id="logo-img">
+            </div>
+            <div class="col-6">
+                <div class="links">
+                    <a href="/entekhab_vahed">  انتخاب واحد</a>
+                    <a href="/barname"> برنامه هفتگی</a>    
+                </div>
+                
+            </div>
+            <div class="col-4">
+                <div class="logout">
+                    خروج
+                <i class="flaticon-log-out"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="main">
+        <div class="col-12", id="main_col">
+            <div class="schedule">
+            <div class="schedule_header">
+                <div class="col-6">
+                    <div class="weekly_label"><span><i class="flaticon-calendar"></i></span> برنامه هفتگی </div>   
+                </div>         
+                <div class="col-6">
+                    <div class="Term"> ترم ۶ </div>
+                </div>
+            </div>
+            
+            <table class="schedule_table" >
+                <tr>
+                    <td></td>
+                    <td>شنبه</td>
+                    <td>یک‌‌شنبه</td>
+                    <td>دوشنبه</td>
+                    <td>سه‌شنبه</td>
+                    <td>چهارشنبه</td>
+                    <td>پنج‌شنبه</td>
+                </tr>
+                
+                <tr>
+                    <td>۸:۰۰ - ۹:۰۰</td>
+                    <td>
+                        <div class="class_time ekhtesasi", id="e1">
+                            <div>۹:۰۰ - ۱۰:۳۰</div>
+                            <div>پایگاه داده‌ها</div>
+                            <div>اختصاصی</div>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>۹:۰۰ - ۱۰:۰۰</td>
+                    <td>
+
+                    </td>
+                    <td></td>
+                    <td>  
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>۱۰:۰۰ - ۱۱:۰۰</td>
+                    <td></td>
+                    <td>
+                        <div class="class_time general", id='g1'>
+                            <div>۱۰:۳۰ - ۱۲:۰۰</div>
+                            <div>اندیشه‌ی ۱</div>
+                            <div>عمومی</div>
+                        </div>
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>۱۱:۰۰ - ۱۲:۰۰</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>۱۲:۰۰ - ۱۳:۰۰</td>
+                    <td></td>
+                    <td>
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+
+                <tr>
+                    <td>۱۳:۰۰ - ۱۴:۰۰</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <div class="class_time fundamental", id='f1'>
+                            <div>۱3:۰۰ - ۱۶:۰۰</div>
+                            <div>آزمایشگاه شبکه</div>
+                            <div>اصلی</div>
+                        </div>
+
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+
+                <tr>
+                    <td>۱۴:۰۰ - ۱۵:۰۰</td>
+                    <td></td>
+                    <td>
+                        <div class="class_time basic", id='b1'>
+                            <div>۱۴:۰۰ - ۱۵:۳۰</div>
+                            <div>معادلات</div>
+                            <div>پایه</div>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>۱۵:۰۰ - ۱۶:۰۰</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>۱۶:۰۰ - ۱۷:۰۰</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>۱۷:۰۰ - ۱۸:۰۰</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table> 
+
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="row">
+        <div class="footer">
+            <div class="col-6">
+                <p class="name">
+                    <i class="flaticon-copyright"></i>
+                    دانشگاه تهران - سامانه‌ی بلبلستان
+                </p>
+            </div>
+
+            <div class="col-6">
+                <p class="socials">
+                    <i class="flaticon-facebook"></i>
+                    <i class="flaticon-instagram"></i>
+                    <i class="flaticon-linkedin-logo"></i>
+                    <i class="flaticon-twitter-logo-on-black-background"></i>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html> 
