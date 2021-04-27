@@ -18,7 +18,6 @@ class App extends React.Component{
     }
     render() {
         const loadingTag = () => {
-            console.log("loading", this.state.loading);
             if (this.state.loading)
             {
                 return (

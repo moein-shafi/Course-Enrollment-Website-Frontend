@@ -1,6 +1,6 @@
 .schedule {
     margin-top: 35px;
-    border: solid 1px rgb(56, 143, 241);
+    border: solid 1px rgba(56, 143, 241);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,7 +34,7 @@
 
 
 .schedule_header {
-    border-bottom: solid 1px rgb(56, 143, 241);
+    border-bottom: solid 1px rgba(56, 143, 241);
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -60,7 +60,7 @@
 
 
 .schedule_header .weekly_label span {
-    color: rgb(56, 143, 241);
+    color: rgba(56, 143, 241);
     font-size: larger;
     position: relative;
     top: 5px;
@@ -71,19 +71,23 @@
     text-align: right;
 }
 
+tr {
+    height: 120px;
+}
 
+tr:first-of-type {
+    height: 80px;
+}
 
 td {
-    border: 1px solid rgb(88, 88, 88);
+    border: 1px solid rgba(88, 88, 88);
     height: 100%;
     position: relative;
-    
-
 }
 
 th {
-    border: 1px solid rgb(0, 0, 0);
-    color: rgb(0, 14, 144);
+    border: 1px solid rgba(0, 0, 0);
+    color: rgba(0, 14, 144);
 }
 
 
@@ -91,7 +95,7 @@ th {
     text-align: center;
     width: 100%;
     height: 100%;
-    table-layout: fixed ;
+    table-layout: fixed;
 }
 
 .schedule_table tr:first-of-type td{
@@ -126,44 +130,28 @@ th {
     justify-content: center;
     border-radius: 5%;
     position: relative;
-
 }
 
+.courseName p {
+    white-space: nowrap;
+    overflow-x: hidden;
+}
 
-.class_time.ekhtesasi {
+.class_time.Ekhtesasi {
     background: rgba(56, 142, 241, 0.7);
 }
 
 
-.class_time.basic {
-    background: rgb(45, 177, 133, 0.7);
+.class_time.Paaye {
+    background: rgba(45, 177, 133, 0.7);
 }
 
 
-.class_time.fundamental {
-    background: rgb(199, 72, 103, 0.7);
+.class_time.Asli {
+    background: rgba(199, 72, 103, 0.7);
 }
 
-.class_time.general {
-    background: rgb(219, 171, 14, 0.7);
+.class_time.Umumi {
+    background: rgba(219, 171, 14, 0.7);
 }
 
-.class_time#e1 {
-    height: 150%;
-    top: 100%;
-}
-
-.class_time#b1 {
-    height: 150%;
-    top: 0%;
-}
-
-.class_time#g1 {
-    height: 150%;
-    top: 50%;
-}
-
-.class_time#f1 {
-    height: 300%;
-    top: 0%;
-}
