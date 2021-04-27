@@ -136,7 +136,6 @@ class Karname extends React.Component {
                 <div className='label'>  کارنامه - ترم
                     {term}
                 </div>
-                <br/>
                     <table className="karname_table">
                         {karnameRows}
 
@@ -197,9 +196,6 @@ class Profile extends React.Component {
         let status = res.code;
 
         if (status === 401){
-            // return(
-            //     <h2>Ridi</h2>
-            // );
             return <Redirect to={{pathname: "/login", state:{from: this.props.location}}} />
         }
         else if (status === 200)
@@ -212,7 +208,7 @@ class Profile extends React.Component {
                         <meta name="viewport" content="width=device-width, initial-scale=1"/>
                         <link rel="stylesheet"href={"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"}/>
                         <link rel="stylesheet" href="./../Common/styles.css"/>
-                        <link rel="stylesheet" href="./Profile.css"/>
+                        <link rel="stylesheet" href="Profile.css"/>
                         <link rel="stylesheet" href="./../Common/Fonts/flaticon.css"/>
                         <link rel="stylesheet" href="./../Common/Fonts/vazir-fonts/fonts.css"/>
                         <script src={"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"}/>
@@ -254,7 +250,7 @@ class Profile extends React.Component {
         }
         else {
             return (
-                <h2>Courses</h2>
+                <h2>404</h2>
         );
         }
     }

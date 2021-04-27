@@ -4,9 +4,38 @@ import "./Fonts/vazir-fonts/fonts.css";
 import "./Fonts/flaticon.css"
 import "./styles.css";
 import logo from "./logo.png";
+import {toast} from "react-toastify";
+import {Redirect} from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
+
+const axios = require('axios').default;
 
 
 export default function Header() {
+    const history = useHistory();
+    const logout = () =>
+    {
+        const response = axios.delete('http://localhost:8080/login')
+            .then(response => {
+                console.log(response);
+                if (response.data.code === "200")
+                {
+                    toast.success(response.data.message);
+                }
+                else
+                {
+                    toast.error(response.data.message);
+                }
+                this.props.value.getCoursesDataReq();
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        history.push("/login");
+
+    }
     return(
         <div className="header">
             <MetaTags>
@@ -27,15 +56,17 @@ export default function Header() {
                 </div>
                 <div className="col-6">
                     <div className="links">
-                        <a href="/entekhab_vahed"> انتخاب واحد</a>
-                        <a href="/barname"> برنامه هفتگی</a>
+                        <a href="/courses"> انتخاب واحد</a>
+                        <a href="/schedule"> برنامه هفتگی</a>
                     </div>
                 </div>
                 <div className="col-4">
-                    <div className="logout">
-                        خروج
-                        <i className="flaticon-log-out"></i>
-                    </div>
+                    <a onClick={logout}>
+                        <div className="logout">
+                            خروج
+                            <i className="flaticon-log-out"></i>
+                        </div>
+                    </a>
                 </div>
             </div>
     );

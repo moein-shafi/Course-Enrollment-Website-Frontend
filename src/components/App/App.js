@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 import './App.css';
 import Login from '../Login/Login';
@@ -20,10 +21,13 @@ function App() {
             <BrowserRouter>
                 <Switch>
                     <Route path="/courses">
-                        <Courses />
-                    </Route>
+                        <div className="COURSES-DIV">
+                            <Courses />
+                        </div>                    </Route>
                     <Route exact path="/">
-                        <Profile />
+                        <div className="PROFILE-DIV">
+                            <Profile />
+                        </div>
                     </Route>
                     <Route path="/schedule">
                         <Schedule />
@@ -33,6 +37,7 @@ function App() {
                     </Route>
                 </Switch>
             </BrowserRouter>
+            <ToastContainer />
         </div>
     );
 }
