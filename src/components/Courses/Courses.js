@@ -7,6 +7,7 @@ import "./../Common/styles.css";
 import Footer from "../Common/Footer";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ReactTooltip from 'react-tooltip';
 
 const axios = require('axios').default;
 
@@ -200,8 +201,10 @@ class OfferingRow extends React.Component {
             "Umumi": "عمومی",
             "Paaye": "پایه",
             "Asli": "اصلی",}
+        console.log(offering.classDays);
+        let tmp =  offering.classTime + "<br>" + offering.classDays[0] + "-" + offering.classDays[1];
         return (
-            <tr>
+            <tr data-tip={tmp}>
                 <td className="action">
                     <button onClick={() => this.addCourse(offering.code, offering.classCode, hasCapacity)} className="action_button" id={status}><i className={statusIcon}/></button>
                 </td>
@@ -398,6 +401,9 @@ class Courses extends React.Component {
                     <div className="row">
                         <Footer />
                     </div>
+                    <ReactTooltip
+                        effect="solid" type="dark" place="left"
+                            offset={{right:160}} multiline="true"/>
 
                 </div>
             );

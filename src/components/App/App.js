@@ -50,7 +50,9 @@ class App extends React.Component{
                             </div>
                         </Route>
                         <Route path="/schedule">
-                            <Schedule />
+                            <div className="SCHEDULE-DIV">
+                                <Schedule />
+                            </div>
                         </Route>
                         <Route path="/login">
                             <div className="LOGIN-DIV">
@@ -64,7 +66,7 @@ class App extends React.Component{
                             </div>
                         </Route>
                         <Route path="/forget_pass">
-                            <div className="LOGIN-DIV">
+                            <div className="FG-DIV">
                                 <h2> Forget Password</h2>
                             </div>
                         </Route>

@@ -102,7 +102,7 @@ class Profile extends React.Component {
             console.log(tableItems);
             Object.values(this.state.profileData.student.addedOfferings).forEach(
                 function(value) {
-                    if (value.finalized === "non_finalized")
+                    if (value.finalized === "finalized")
                     {
                         value.course.classDays.forEach(
                             function (day) {
