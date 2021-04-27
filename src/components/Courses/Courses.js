@@ -18,7 +18,6 @@ class TableRow extends React.Component {
             params: {courseCode: code}
         })
             .then(response => {
-                console.log(response);
                 if (response.data.code === "200")
                 {
                     toast.success(response.data.message);
@@ -33,6 +32,7 @@ class TableRow extends React.Component {
             .catch(function (error) {
                 console.log(error);
             })
+        // console.log(response);
 
 
     }
@@ -91,7 +91,7 @@ class SelectedCourses extends React.Component {
             params: {action: "submit"}
         })
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 if (response.data.code === "200")
                 {
                     toast.success(response.data.message);
@@ -164,7 +164,7 @@ class OfferingRow extends React.Component {
             params: {courseCode: code, classCode: classCode, isWaiting:!hasCapacity}
         })
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 if (response.data.code === "200")
                 {
                     toast.success(response.data.message);
@@ -184,7 +184,7 @@ class OfferingRow extends React.Component {
 
     render() {
         const {offering, hasCapacity} = this.props.value;
-        console.log(this.props.value);
+        // console.log(this.props.value);
         let fullStatus = "full";
         if (offering.signedUp < offering.capacity){
             fullStatus = "not_full";
@@ -230,7 +230,7 @@ class OfferingsTable extends React.Component {
 
     render() {
         const {coursesData, courseType, keyword, getCoursesDataReq} = this.props.value;
-        console.log(this.props.value);
+        // console.log(this.props.value);
         let offeringRows = [];
         let courseTypes =
             {"Takhasosi": "ekhtesasi_courses",
@@ -277,7 +277,8 @@ class Courses extends React.Component {
         this.state = { profileData: [],
             coursesData: [],
             searchCourseType: "all_courses",
-            searchKeyword: ""};
+            searchKeyword: "",
+            loading: false};
         this.getCoursesDataReq();
         this.searchCallable = null;
     }
@@ -292,16 +293,32 @@ class Courses extends React.Component {
         }
     }
 
-    getCoursesDataReq = async () => {
-        try {
-            const response = await axios.get('http://localhost:8080/course');
-            this.setState({ coursesData: response.data });
-
-        }
-        catch (err)
+    loadingTag = () => {
+        console.log("loading", this.state.loading);
+        if (this.state.loading)
         {
-            console.log(err);
+            return (
+                <div className="loading" >
+                    <div className="spinner-grow" role="status">
+                    </div>
+                </div>);}
+        else {
+            return null;
         }
+    }
+
+    getCoursesDataReq = () => {
+        const getData = () => {
+            axios.get('http://localhost:8080/course')
+                .then(response => {
+                    this.setState({coursesData: response.data});
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        };
+        getData();
+
     }
 
     search()
@@ -339,6 +356,11 @@ class Courses extends React.Component {
                         <script src={"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"}/>
                         <script src={"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"}/>
                     </MetaTags>
+                    {this.state.loading && (
+                        <div className="loading" hidden="true" >
+                            <div className="spinner-grow" role="status">
+                            </div>
+                        </div>)}
                     <div className="row">
                         <Header />
                     </div>

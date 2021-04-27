@@ -94,4 +94,24 @@ body {
     align-self: flex-start;
 }
 
+.loading {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
 
+.spinner-grow{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -20px;
+    margin-left: -25px;
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    font-size: 10px;
+    background: rgba(100, 0, 0, 100);
+}

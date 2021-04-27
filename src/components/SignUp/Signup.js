@@ -1,24 +1,21 @@
 import React, { useState } from 'react';
-import './Login.css';
+import './Signup.css';
 import { useHistory } from "react-router-dom";
 
 const axios = require('axios').default;
 
-async function loginUser(credentials) {
+async function signup(credentials) {
 
-    return axios.post('http://localhost:8080/login', null,{
-        params: {studentId: credentials.studentId}
-    })
-        .then(response => response.status === 200)
-        .catch(function (error) {
-            console.log(error);
-        });
+    return null;
 
 }
 
 
-export default function Login() {
+export default function Signup() {
     const [email, setEmail] = useState();
+    const [name, setName] = useState();
+    const [secondName, setSecondName] = useState();
+    const [birthDate, setBirthDate] = useState();
     const [password, setPassword] = useState();
     const history = useHistory();
 
@@ -26,7 +23,7 @@ export default function Login() {
     const handleSubmit = async e => {
 
         e.preventDefault();
-        const success = await loginUser({
+        const success = await signup({
             studentId:email,
             password:password,
         });
@@ -40,7 +37,7 @@ export default function Login() {
     return(
         <div className="login-wrapper">
             <div className="login-label">
-                <h1>لطفا وارد شوید</h1>
+                <h1>ثبت نام</h1>
             </div>
             <form onSubmit={handleSubmit}>
                 <label>
@@ -48,16 +45,27 @@ export default function Login() {
                     <input type="text" onChange={e => setEmail(e.target.value)} />
                 </label>
                 <label>
+                    <p>نام</p>
+                    <input type="text" onChange={e => setName(e.target.value)} />
+                </label>
+                <label>
+                    <p>نام خانوادگی</p>
+                    <input type="text" onChange={e => setSecondName(e.target.value)} />
+                </label>
+                <label>
+                    <p>تاریخ تولد</p>
+                    <input type="text" onChange={e => setBirthDate(e.target.value)} />
+                </label>
+                <label>
                     <p>رمز عبور</p>
                     <input type="password" onChange={e => setPassword(e.target.value)} />
                 </label>
                 <div>
-                    <button type="submit">ورود</button>
+                    <button type="submit">ثبت نام</button>
                 </div>
 
                 <div>
-                    <a href="/signup">ثبت نام </a> |
-                    <a href="/forget_pass"> فراموشی رمز عبور</a>
+                    <a href="/login">ورود </a>
                 </div>
             </form>
         </div>
