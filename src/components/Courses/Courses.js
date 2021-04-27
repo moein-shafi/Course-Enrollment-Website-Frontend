@@ -145,7 +145,7 @@ class SelectedCourses extends React.Component {
                                     {student.finalizedUnits}</div>
                             </div>
                             <div className="col-6">
-                                <button type="button" id="revert"><i className="flaticon-refresh-arrow"></i></button>
+                                <button onClick={getCoursesDataReq} type="button" id="revert"><i className="flaticon-refresh-arrow"></i></button>
                                 <button onClick={() => this.submitSelected()} type="button" id="final_submit">ثبت نهایی</button>
                             </div>
                         </div>
@@ -370,8 +370,6 @@ class Courses extends React.Component {
                                     courseType: this.state.searchCourseType,
                                     keyword: this.state.searchKeyword, getCoursesDataReq:this.getCoursesDataReq}} />
                             </div>
-
-
                         </div>
                     </div>
 
