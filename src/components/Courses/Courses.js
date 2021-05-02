@@ -107,8 +107,29 @@ class SelectedCourses extends React.Component {
             .catch(function (error) {
                 console.log(error);
             })
+    }
 
 
+    refreshSelected(){
+        const response = axios.post('http://localhost:8080/course', null,{
+            params: {action: "reset"}
+        })
+            .then(response => {
+                // console.log(response);
+                if (response.data.code === "200")
+                {
+                    toast.success(response.data.message);
+                }
+                else
+                {
+                    toast.error(response.data.message);
+                }
+                this.props.value.getCoursesDataReq();
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
     }
 
     componentWillReceiveProps(nextProps) {
@@ -125,7 +146,7 @@ class SelectedCourses extends React.Component {
                 getCoursesDataReq:getCoursesDataReq}} />);
         });
 
-
+        console.log(student);
         return (
             <div className="selected_courses">
                 <div className='label'>دروس انتخاب‌شده</div>
@@ -146,7 +167,7 @@ class SelectedCourses extends React.Component {
                                     {student.finalizedUnits}</div>
                             </div>
                             <div className="col-6">
-                                <button onClick={getCoursesDataReq} type="button" id="revert"><i className="flaticon-refresh-arrow"></i></button>
+                                <button onClick={() => this.refreshSelected()} type="button" id="revert"><i className="flaticon-refresh-arrow"></i></button>
                                 <button onClick={() => this.submitSelected()} type="button" id="final_submit">ثبت نهایی</button>
                             </div>
                         </div>
@@ -201,7 +222,6 @@ class OfferingRow extends React.Component {
             "Umumi": "عمومی",
             "Paaye": "پایه",
             "Asli": "اصلی",}
-        console.log(offering.classDays);
         let tmp =  offering.classTime + "<br>" + offering.classDays[0] + "-" + offering.classDays[1];
         return (
             <tr data-tip={tmp}>
