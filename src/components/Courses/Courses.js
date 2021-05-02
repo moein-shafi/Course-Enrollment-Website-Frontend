@@ -111,6 +111,30 @@ class SelectedCourses extends React.Component {
 
     }
 
+    refreshSelected(){
+        const response = axios.post('http://localhost:8080/course', null,{
+            params: {action: "reset"}
+        })
+            .then(response => {
+                // console.log(response);
+                if (response.data.code === "200")
+                {
+                    toast.success(response.data.message);
+                }
+                else
+                {
+                    toast.error(response.data.message);
+                }
+                this.props.value.getCoursesDataReq();
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+
+    }
+
+
     componentWillReceiveProps(nextProps) {
         this.setState({ value: nextProps.value });
     }
@@ -146,7 +170,7 @@ class SelectedCourses extends React.Component {
                                     {student.finalizedUnits}</div>
                             </div>
                             <div className="col-6">
-                                <button onClick={getCoursesDataReq} type="button" id="revert"><i className="flaticon-refresh-arrow"></i></button>
+                                <button onClick={() => this.refreshSelected()} type="button" id="revert"><i className="flaticon-refresh-arrow"></i></button>
                                 <button onClick={() => this.submitSelected()} type="button" id="final_submit">ثبت نهایی</button>
                             </div>
                         </div>
