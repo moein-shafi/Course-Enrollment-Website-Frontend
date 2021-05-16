@@ -7,7 +7,7 @@ const axios = require('axios').default;
 async function loginUser(credentials) {
 
     return axios.post('http://localhost:8080/login', null,{
-        params: {studentId: credentials.studentId}
+        params: {email: credentials.email, password: credentials.password}
     })
         .then(response => response.status === 200)
         .catch(function (error) {
@@ -27,7 +27,7 @@ export default function Login() {
 
         e.preventDefault();
         const success = await loginUser({
-            studentId:email,
+            email:email,
             password:password,
         });
         console.log(success);
