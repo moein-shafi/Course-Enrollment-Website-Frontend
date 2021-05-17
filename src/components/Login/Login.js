@@ -6,18 +6,27 @@ const axios = require('axios').default;
 
 async function loginUser(credentials) {
 
-    return axios.post('http://localhost:8080/login', null,{
-        params: {studentId: credentials.studentId}
-    })
-        .then(response => response.status === 200)
+    let token = axios.post('http://localhost:8080/login',
+        {
+        "email":credentials.email,
+        "password":credentials.password
+    },
+        {
+            "Content-Type": "application/json"
+        })
+        .then(response => response)
+        .then(response => response.data.token)
         .catch(function (error) {
-            console.log(error);
+            console.log("error :", error);
         });
+    return token;
 
 }
 
 
-export default function Login() {
+
+export default function Login({setJWT}) {
+
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const history = useHistory();
@@ -26,19 +35,23 @@ export default function Login() {
     const handleSubmit = async e => {
 
         e.preventDefault();
-        const success = await loginUser({
-            studentId:email,
+        const token = await loginUser({
+            email:email,
             password:password,
         });
-        console.log(success);
-        if (success)
+        if (email && token){
+            localStorage.setItem("token", token);
+            localStorage.setItem("email", email);
+        }
+        setJWT(token);
+        if (token)
         {
             history.push("/");
         }
     }
 
     return(
-        <div className="login-wrapper">
+    <div className="login-wrapper">
             <div className="login-label">
                 <h1>لطفا وارد شوید</h1>
             </div>

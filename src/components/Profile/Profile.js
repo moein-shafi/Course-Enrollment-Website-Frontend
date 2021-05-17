@@ -173,18 +173,32 @@ class Profile extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { profileData: [],
-                       coursesData: []};
-        //     .then(response => this.setState({ profileData: response.data }));
+        this.state = {
+            profileData: [],
+            coursesData: [],
+        };
+
         const getCoursesDataReq = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/course');
-                this.setState({ coursesData: response.data });
-
+                const token = localStorage.getItem("token");
+                const email = localStorage.getItem("email");
+                console.log("JWT IN getCoursesDataReq:", token)
+                let response = axios.get('http://localhost:8080/profile', {headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        console.log(response);
+                        this.setState({ profileData: response.data });
+                    } )
+                    .catch(function (error) {
+                        console.log(error);
+                    });
             }
             catch (err)
             {
-                console.log(err);
+                console.log("ERROR:", err);
             }
         }
         getCoursesDataReq();
@@ -194,6 +208,7 @@ class Profile extends React.Component {
 
         let res = this.state.coursesData;
         let status = res.code;
+        console.log(res);
 
         if (status === 401){
             return <Redirect to={{pathname: "/login", state:{from: this.props.location}}} />

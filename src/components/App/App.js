@@ -14,7 +14,10 @@ class App extends React.Component{
 
     constructor(props) {
         super(props);
-        this.state = {loading:false};
+        this.state = {
+            loading:false,
+            jwt:null
+        };
     }
     render() {
         const loadingTag = () => {
@@ -34,8 +37,13 @@ class App extends React.Component{
             this.setState({loading: v});
         }
 
+        const setJWT = (v) => {
+            this.setState({jwt: v});
+        }
+
         return (
             <div className="wrapper">
+                <h1>{"JWT:" + localStorage.getItem("token")}</h1>
                 {loadingTag()}
                 <BrowserRouter>
                     <Switch>
@@ -46,7 +54,7 @@ class App extends React.Component{
                         </Route>
                         <Route exact path="/">
                             <div className="PROFILE-DIV">
-                                <Profile />
+                                <Profile/>
                             </div>
                         </Route>
                         <Route path="/schedule">
@@ -56,7 +64,7 @@ class App extends React.Component{
                         </Route>
                         <Route path="/login">
                             <div className="LOGIN-DIV">
-                                <Login />
+                                <Login setJWT={setJWT}/>
                             </div>
                         </Route>
 
