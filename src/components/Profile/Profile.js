@@ -209,9 +209,8 @@ class Profile extends React.Component {
     render() {
         let res = this.state.profileData;
         let status = res.code;
-        console.log("res", res);
 
-        if (status === 401){
+        if (localStorage.getItem("token") === "null"){
             return <Redirect to={{pathname: "/login"}} />
         }
         else if (status === 200)

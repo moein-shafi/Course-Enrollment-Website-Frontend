@@ -41,6 +41,10 @@ async function signup(credentials, history) {
 
 }
 
+function validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
 
 export default function Signup() {
     const [email, setEmail] = useState();
@@ -58,25 +62,37 @@ export default function Signup() {
     const handleSubmit = async e => {
 
         e.preventDefault();
+
+        if (!(email) && !(password) && !(name) &&
+            !(secondName) && !(birthDate) && !(faculty) &&
+            !(SID) && !(field) && !(level)) {
+            toast.error("ورودی‌ها نباید خالی باشند.!")
+            return;
+        }
+        if (!validateEmail(email))
+        {
+            toast.error("فرمت ایمیل درست نیست!")
+            return;
+        }
         const success = await signup({
-            studentId:email,
-            password:password,
-            name:name,
-            secondName:secondName,
-            birthDate:birthDate,
-            faculty:faculty,
-            SID:SID,
-            field:field,
-            level:level,
-            email:email
+            email: email,
+            password: password,
+            name: name,
+            secondName: secondName,
+            birthDate: birthDate,
+            faculty: faculty,
+            SID: SID,
+            field: field,
+            level: level,
         }, history);
         console.log(success);
-        if (success)
-        {
+        if (success) {
             history.push("/");
         }
+
+
     }
-    if (false)
+    if (localStorage.getItem("token") !== "null")
     {
         return <Redirect to={{pathname:"/"}}/>;
     }

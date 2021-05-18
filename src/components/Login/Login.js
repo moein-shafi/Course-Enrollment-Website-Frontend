@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import './Login.css';
 import {Redirect, useHistory} from "react-router-dom";
+import {toast} from "react-toastify";
 
 const axios = require('axios').default;
 
-async function loginUser(credentials) {
+async function loginUser(credentials, history) {
 
     let token = axios.post('http://localhost:8080/login',
         {
@@ -14,8 +15,18 @@ async function loginUser(credentials) {
         {
             "Content-Type": "application/json"
         })
-        .then(response => response)
-        .then(response => response.data.token)
+        .then(response => {
+            if (response.data.code === 200)
+            {
+                toast.success("You Logged in!");
+                localStorage.setItem("token", response.data.token);
+                history.push("/")
+            }
+            else
+            {
+                toast.error(response.data.message);
+            }
+        })
         .catch(function (error) {
             console.log("error :", error);
         });
@@ -38,7 +49,7 @@ export default function Login({setJWT}) {
         const token = await loginUser({
             email:email,
             password:password,
-        });
+        }, history);
         if (email && token){
             localStorage.setItem("token", token);
             history.push("/");
@@ -46,7 +57,6 @@ export default function Login({setJWT}) {
 
     }
 
-    console.log("kir", localStorage.getItem("token"));
     if (localStorage.getItem("token") !== "null")
     {
         return <Redirect to={{pathname:"/"}}/>;
