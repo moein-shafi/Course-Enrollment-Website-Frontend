@@ -15,7 +15,7 @@ function TimeCell(props) {
     const courseTypes = {
         "Asli": "اصلی",
         "Paaye": "پایه",
-        "Ekhtesasi": "اختصاصی",
+        "Takhasosi": "اختصاصی",
         "Umumi": "عمومی",
     }
 
@@ -55,7 +55,11 @@ class Profile extends React.Component {
         this.state = { profileData: []};
         const getProfileDataReq = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/profile');
+                const response = await axios.get('http://localhost:8080/profile', {headers: {
+                        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
                 this.setState({ profileData: response.data });
             }
             catch (err)
@@ -66,12 +70,8 @@ class Profile extends React.Component {
         getProfileDataReq();
     }
 
-// <div className="class_time ekhtesasi" id="e1">
-// <div>۹:۰۰ - ۱۰:۳۰</div>
-// <div>پایگاه داده‌ها</div>
-// <div>اختصاصی</div>
-// </div>
     render() {
+
 
         let res = this.state.profileData;
         let status = res.code;

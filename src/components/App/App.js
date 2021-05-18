@@ -37,13 +37,9 @@ class App extends React.Component{
             this.setState({loading: v});
         }
 
-        const setJWT = (v) => {
-            this.setState({jwt: v});
-        }
 
         return (
             <div className="wrapper">
-                <h1>{"JWT:" + localStorage.getItem("token")}</h1>
                 {loadingTag()}
                 <BrowserRouter>
                     <Switch>
@@ -64,12 +60,12 @@ class App extends React.Component{
                         </Route>
                         <Route path="/login">
                             <div className="LOGIN-DIV">
-                                <Login setJWT={setJWT}/>
+                                <Login />
                             </div>
                         </Route>
 
                         <Route path="/signup">
-                            <div className="LOGIN-DIV">
+                            <div className="SIGNUP-DIV">
                                 <Signup />
                             </div>
                         </Route>

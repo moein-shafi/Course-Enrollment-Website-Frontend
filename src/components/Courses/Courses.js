@@ -16,7 +16,13 @@ class TableRow extends React.Component {
 
     deleteOffering(code)  {
         const response = axios.delete('http://localhost:8080/course', {
-            params: {courseCode: code}
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("token")}`,
+                'Content-Type': 'application/json'
+            },
+            data: {
+                courseCode: code
+            }
         })
             .then(response => {
                 if (response.data.code === "200")
@@ -88,9 +94,11 @@ class SelectedCourses extends React.Component {
     }
 
     submitSelected(){
-        const response = axios.post('http://localhost:8080/course', null,{
-            params: {action: "submit"}
-        })
+        const response = axios.post('http://localhost:8080/course', {action: "submit"},{
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("token")}`,
+                'Content-Type': 'application/json'
+            }})
             .then(response => {
                 // console.log(response);
                 if (response.data.code === "200")
@@ -111,9 +119,11 @@ class SelectedCourses extends React.Component {
 
 
     refreshSelected(){
-        const response = axios.post('http://localhost:8080/course', null,{
-            params: {action: "reset"}
-        })
+        const response = axios.post('http://localhost:8080/course', {action: "reset"},{
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("token")}`,
+                'Content-Type': 'application/json'
+            }})
             .then(response => {
                 // console.log(response);
                 if (response.data.code === "200")
@@ -130,29 +140,6 @@ class SelectedCourses extends React.Component {
             .catch(function (error) {
                 console.log(error);
             })
-    }
-
-    refreshSelected(){
-        const response = axios.post('http://localhost:8080/course', null,{
-            params: {action: "reset"}
-        })
-            .then(response => {
-                // console.log(response);
-                if (response.data.code === "200")
-                {
-                    toast.success(response.data.message);
-                }
-                else
-                {
-                    toast.error(response.data.message);
-                }
-                this.props.value.getCoursesDataReq();
-
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-
     }
 
 
@@ -206,8 +193,11 @@ class SelectedCourses extends React.Component {
 class OfferingRow extends React.Component {
 
     addCourse(code, classCode, hasCapacity){
-        const response = axios.put('http://localhost:8080/course', null,{
-            params: {courseCode: code, classCode: classCode, isWaiting:!hasCapacity}
+        const token = localStorage.getItem("token");
+        const response = axios.put('http://localhost:8080/course', {courseCode: code, classCode: classCode, isWaiting:!hasCapacity},{
+            headers: {"Authorization": `Bearer ${token}`,
+                'Content-Type': 'application/json'}
+
         })
             .then(response => {
                 // console.log(response);
@@ -356,7 +346,12 @@ class Courses extends React.Component {
 
     getCoursesDataReq = () => {
         const getData = () => {
-            axios.get('http://localhost:8080/course')
+            const token = localStorage.getItem("token");
+            axios.get('http://localhost:8080/course', {headers: {
+                    "Authorization": `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            })
                 .then(response => {
                     this.setState({coursesData: response.data});
                 })

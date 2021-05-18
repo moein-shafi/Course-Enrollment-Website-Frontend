@@ -1,11 +1,11 @@
 
-.LOGIN-DIV {
+.SIGNUP-DIV {
     display: flex;
     align-items: center;
     vertical-align: center;
 
 }
-.LOGIN-DIV .login-wrapper {
+.SIGNUP-DIV .login-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,13 +17,24 @@
     border-radius: 5%;
 }
 
-.LOGIN-DIV button{
+.SIGNUP-DIV button{
     margin: 10px;
 }
 
-.LOGIN-DIV .login-label {
+.SIGNUP-DIV .login-label {
     background: rgb(0, 76, 170);
     color: white;
     width: 100%;
+}
 
+.SIGNUP-DIV .row {
+    display: flex;
+    flex-direction: row;
+}
+
+.SIGNUP-DIV .column {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
 }

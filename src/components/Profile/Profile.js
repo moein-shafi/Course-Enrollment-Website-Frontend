@@ -14,7 +14,7 @@ const axios = require('axios').default;
 class InfoBar extends React.Component {
 
     render() {
-        const {student} = this.props.coursesData;
+        const {student} = this.props.profileData;
         return (
             <div className="info_bar">
             <div className="student_details">
@@ -152,7 +152,7 @@ class Transcript extends React.Component {
     render() {
         console.log(this.props.coursesData)
 
-        const {student, allCourses} = this.props.coursesData;
+        const {student, termCourses, allCourses} = this.props.profileData;
         // console.log(allCourses);
         const {termGrades, termGpa} = student;
         var transcripts = [];
@@ -181,10 +181,8 @@ class Profile extends React.Component {
         const getCoursesDataReq = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const email = localStorage.getItem("email");
-                console.log("JWT IN getCoursesDataReq:", token)
                 let response = axios.get('http://localhost:8080/profile', {headers: {
-                        Authorization: `Bearer ${token}`,
+                        "Authorization": `Bearer ${token}`,
                         'Content-Type': 'application/json'
                     }
                 })
@@ -202,16 +200,19 @@ class Profile extends React.Component {
             }
         }
         getCoursesDataReq();
+
     }
 
-    render() {
 
-        let res = this.state.coursesData;
+
+
+    render() {
+        let res = this.state.profileData;
         let status = res.code;
-        console.log(res);
+        console.log("res", res);
 
         if (status === 401){
-            return <Redirect to={{pathname: "/login", state:{from: this.props.location}}} />
+            return <Redirect to={{pathname: "/login"}} />
         }
         else if (status === 200)
         {
@@ -251,10 +252,10 @@ class Profile extends React.Component {
                         </div>
                         <div className="row" id="main">
                             <div className="col-md-4">
-                                <InfoBar coursesData={this.state.coursesData} />
+                                <InfoBar profileData={this.state.profileData} />
                             </div>
                             <div className="col-md-8">
-                                <Transcript coursesData={this.state.coursesData}/>
+                                <Transcript profileData={this.state.profileData}/>
                             </div>
                         </div>
                         <div className="row">
@@ -264,10 +265,9 @@ class Profile extends React.Component {
                 );
         }
         else {
-            return (
-                <h2>404</h2>
-        );
+            return <h1>404</h1>;
         }
+
     }
 }
 

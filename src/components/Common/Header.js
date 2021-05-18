@@ -16,23 +16,7 @@ export default function Header() {
     const history = useHistory();
     const logout = () =>
     {
-        const response = axios.delete('http://localhost:8080/login')
-            .then(response => {
-                console.log(response);
-                if (response.data.code === "200")
-                {
-                    toast.success(response.data.message);
-                }
-                else
-                {
-                    toast.error(response.data.message);
-                }
-                this.props.value.getCoursesDataReq();
-
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
+        localStorage.setItem("token", "null");
         history.push("/login");
 
     }
