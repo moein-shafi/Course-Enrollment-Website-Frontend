@@ -92,7 +92,7 @@ export default function Signup() {
 
 
     }
-    if (localStorage.getItem("token") !== "null")
+    if (localStorage.getItem("token") !== null)
     {
         return <Redirect to={{pathname:"/"}}/>;
     }

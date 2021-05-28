@@ -16,7 +16,8 @@ export default function Header() {
     const history = useHistory();
     const logout = () =>
     {
-        localStorage.setItem("token", "null");
+//        localStorage.setItem("token", "null");
+        localStorage.removeItem("token");
         history.push("/login");
 
     }

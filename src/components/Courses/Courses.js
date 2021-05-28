@@ -372,7 +372,7 @@ class Courses extends React.Component {
         let res = this.state.coursesData;
         let status = res.code;
 
-        if (localStorage.getItem("token") === "null"){
+        if (localStorage.getItem("token") === null){
             return <Redirect to={{pathname: "/login"}} />
         }
         else if (status === 200) {
