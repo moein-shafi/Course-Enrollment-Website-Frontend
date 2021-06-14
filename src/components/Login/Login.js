@@ -7,7 +7,7 @@ const axios = require('axios').default;
 
 async function loginUser(credentials, history) {
 
-    let token = axios.post('http://localhost:8080/login',
+    let token = axios.post('http://87.247.185.122:31123/login',
         {
         "email":credentials.email,
         "password":credentials.password
@@ -16,6 +16,7 @@ async function loginUser(credentials, history) {
             "Content-Type": "application/json"
         })
         .then(response => {
+            console.log(response);
             if (response.data.code === 200)
             {
                 toast.success("You Logged in!");

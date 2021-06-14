@@ -7,7 +7,7 @@ const axios = require('axios').default;
 
 async function signup(credentials, history) {
 
-    axios.post('http://localhost:8080/signup',
+    axios.post('http://87.247.185.122:31123/signup',
         {
             "email":credentials.email,
             "password":credentials.password,
