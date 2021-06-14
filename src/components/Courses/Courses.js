@@ -15,7 +15,7 @@ const axios = require('axios').default;
 class TableRow extends React.Component {
 
     deleteOffering(code)  {
-        const response = axios.delete('http://localhost:8080/course', {
+        const response = axios.delete('http://87.247.185.122:30303/course', {
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem("token")}`,
                 'Content-Type': 'application/json'
@@ -94,7 +94,7 @@ class SelectedCourses extends React.Component {
     }
 
     submitSelected(){
-        const response = axios.post('http://localhost:8080/course', {action: "submit"},{
+        const response = axios.post('http://87.247.185.122:30303/course', {action: "submit"},{
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem("token")}`,
                 'Content-Type': 'application/json'
@@ -119,7 +119,7 @@ class SelectedCourses extends React.Component {
 
 
     refreshSelected(){
-        const response = axios.post('http://localhost:8080/course', {action: "reset"},{
+        const response = axios.post('http://87.247.185.122:30303/course', {action: "reset"},{
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem("token")}`,
                 'Content-Type': 'application/json'
@@ -194,7 +194,7 @@ class OfferingRow extends React.Component {
 
     addCourse(code, classCode, hasCapacity){
         const token = localStorage.getItem("token");
-        const response = axios.put('http://localhost:8080/course', {courseCode: code, classCode: classCode, isWaiting:!hasCapacity},{
+        const response = axios.put('http://87.247.185.122:30303/course', {courseCode: code, classCode: classCode, isWaiting:!hasCapacity},{
             headers: {"Authorization": `Bearer ${token}`,
                 'Content-Type': 'application/json'}
 
@@ -347,7 +347,7 @@ class Courses extends React.Component {
     getCoursesDataReq = () => {
         const getData = () => {
             const token = localStorage.getItem("token");
-            axios.get('http://localhost:8080/course', {headers: {
+            axios.get('http://87.247.185.122:30303/course', {headers: {
                     "Authorization": `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 }

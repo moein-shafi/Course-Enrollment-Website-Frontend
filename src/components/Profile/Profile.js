@@ -181,7 +181,7 @@ class Profile extends React.Component {
         const getCoursesDataReq = async () => {
             try {
                 const token = localStorage.getItem("token");
-                let response = axios.get('http://localhost:8080/profile', {headers: {
+                let response = axios.get('http://87.247.185.122:30303/profile', {headers: {
                         "Authorization": `Bearer ${token}`,
                         'Content-Type': 'application/json'
                     }

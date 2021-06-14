@@ -55,7 +55,7 @@ class Profile extends React.Component {
         this.state = { profileData: []};
         const getProfileDataReq = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/profile', {headers: {
+                const response = await axios.get('http://87.247.185.122:30303/profile', {headers: {
                         "Authorization": `Bearer ${localStorage.getItem("token")}`,
                         'Content-Type': 'application/json'
                     }
