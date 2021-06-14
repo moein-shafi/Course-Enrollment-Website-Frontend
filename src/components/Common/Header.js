@@ -43,7 +43,7 @@ export default function Header() {
                 </div>
                 <div className="col-6">
                     <div className="links">
-                        <a href="/courses"> انتخاب واحد</a>
+                        <a href="/courses"> انتخاب ممد</a>
                         <a href="/schedule"> برنامه هفتگی</a>
                     </div>
                 </div>
